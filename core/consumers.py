@@ -13,4 +13,9 @@ class NotificationConsumer(WebsocketConsumer):
     def disconnect(self, close_code):
         async_to_sync(self.channel_layer.group_discard)(self.GROUP_NAME, self.channel_name)
 
+    def notification_message_func(self, event):
+        html = get_template('partials/notification_counter.html').render(
+            context = {'num': event['message']}
+            )
+        self.send(text_data=html)
 
