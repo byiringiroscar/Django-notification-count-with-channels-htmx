@@ -8,9 +8,9 @@
     <!-- HTMX -->
     <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
     <script src="https://unpkg.com/htmx.org@1.9.11" integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0" crossorigin="anonymous"></script>
-
+    <script src="https://unpkg.com/htmx.org@1.9.11/dist/ext/ws.js"></script>
 </head>
-<body hx-on="film-added: document.body.style.backgroundColor = '#aaa';">
+<body hx-ext="ws" ws-connect="/ws/notifications/">
 
     <div class="m-4"  id="main">
         {% block content %}
