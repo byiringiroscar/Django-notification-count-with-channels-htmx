@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1>Home</h1>
+
+
+<button
+hx-get="{% url 'index' %}"
+hx-trigger="click"
+hx-target="#notification-count"
+hx-swap="innerHTML"
+>Incriment notification</button>
+
+
+<div id="notification-count" style="position: fixed; top: 10px; right: 10px;">
+    {% include 'partials/notification_counter.html' %}
+</div>
+
+
+{% endblock %}
