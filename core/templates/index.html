@@ -9,7 +9,12 @@
 <button
 hx-get="{% url 'index' %}"
 hx-trigger="click"
+hx-target="#message-display"
 >Incriment notification</button>
+
+<div id="message-display">
+    {% include 'partials/message_sent.html' %}
+</div>
 
 
 <div id="notification-count" style="position: fixed; top: 10px; right: 10px;">
