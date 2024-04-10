@@ -9,10 +9,9 @@ from asgiref.sync import async_to_sync
 def notification_handler(sender, instance, created, **kwargs):
     if created:
         channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(
-            'notification',
-            {
-                'type': 'notification_message',
-                'message': instance.count_not
-            }
-        )
+        group_name = 'new-notifications'
+        event = {
+            'type': 'notification_message_func',
+            'message': instance.count_not
+        }
+        async_to_sync(channel_layer.group_send)(group_name, event)
